@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#f7f8fa" name="theme-color"/><meta content="Simulador de cierre del Apertura 2026. Jornadas 14 a 17 y partidos pendientes." name="description"/><title>Simulador AP26 · @theFamousJL</title><link href="style.css?v=12" rel="stylesheet"/><script defer="" src="data.js?v=5"></script><script defer="" src="scenarios.js?v=5"></script><script defer="" src="engine.js?v=5"></script><script defer="" src="app.js?v=12"></script><script defer="" src="share.js?v=5"></script><style>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#015DAA" name="theme-color"/><meta content="Simulador de cierre del Apertura 2026. Jornadas 14 a 17 y partidos pendientes." name="description"/><title>Simulador AP26 · @theFamousJL</title><link href="style.css?v=13" rel="stylesheet"/><script defer="" src="data.js?v=5"></script><script defer="" src="scenarios.js?v=5"></script><script defer="" src="engine.js?v=5"></script><script defer="" src="app.js?v=13"></script><script defer="" src="share.js?v=5"></script><style>
 /* Ajustes Octubre 2026: index.html autocontenido, sin cambiar archivos JS/CSS externos. */
 .brand{min-width:0;flex:1}.brand>div{min-width:0}.brand h1{font-size:clamp(16px,2.4vw,25px);line-height:1.17;max-width:340px;text-wrap:balance}
 .header-actions{flex-shrink:0}
@@ -146,6 +146,50 @@ header{gap:12px}.brand h1{max-width:none}
  #fixtures .game-line{min-height:0!important;gap:4px!important}
  .layout>.matches>.table-direction-hint{font-size:clamp(11px,1.1vw,16px)}
 }
+
+/* V12: En pantallas táctiles, al editar un marcador la cintilla no debe
+   subir sobre el teclado virtual de iOS Safari. Se restaura al salir del campo. */
+@media (hover: none) and (pointer: coarse) {
+  html.score-field-editing .sim-bottom-bar {
+    display: none !important;
+  }
+}
+
+/* V13 · Identidad Tigres: Azul Pantone 286 C, Amarillo Pantone 137 C, Blanco */
+:root{--tg-blue:#015DAA;--tg-blue-dark:#002B59;--tg-yellow:#FBAF35;--tg-white:#FFFFFF;background:var(--tg-blue-dark)!important;color:#fff!important;color-scheme:dark}
+html,body{background:linear-gradient(160deg,#015DAA 0%,#003B78 48%,#00264E 100%) fixed!important;color:#fff!important}
+main{color:#fff!important}h1,h2,h3,strong,label,summary,th,td,.section-head,.club,.current,.eyebrow,.day,.game-top,.scenario,.whatif-control,.whatif-control label,.whatif-control p,.sim-progress-top,.signature-handle,.signature-block,.sim-bottom-bar,.fixtures-info,.swipe-hint,.standings-scroll-hint,.table-direction-hint{color:#fff!important}
+header:before{background:linear-gradient(90deg,#FBAF35,#FFA300,#FBAF35)!important;opacity:1!important}
+.brand h1{color:#fff!important}
+p,small,.sub,.section-head>span,.day,.game-top,.game-top span,footer,.whatif-examples,.landscape-help{color:#eff6ff!important}
+.tigres,.whatif-control,.quick-controls .whatif-control,.game,.table-wrap,.sim-bottom-bar,.scenario-panel,.scenario{background:linear-gradient(140deg,#054f96,#00396f)!important;border:1px solid #4596d1!important;color:#fff!important;box-shadow:none}
+.tigres{border-color:#FBAF35!important}
+.scenario-toggle{color:#fff!important;background:transparent!important;border-color:transparent!important}
+.scenario-toggle svg, .quiet svg{color:#fff!important}
+.scenario,.scenario small,.scenario strong{color:#fff!important}
+.scenario.active{background:#FBAF35!important;border-color:#FBAF35!important;color:#002a55!important}
+.scenario.active small,.scenario.active strong{color:#002a55!important}
+.whatif-control input[type=checkbox]{accent-color:#FBAF35!important}
+#rounds,nav#rounds{background:#00366b!important;border:1px solid #227abc!important}
+#rounds button{background:transparent!important;color:#fff!important;border-color:transparent!important}
+#rounds button.active{background:#FBAF35!important;color:#002b59!important;box-shadow:0 4px 15px #0003!important}
+.signal,.round-signal,.match-signal{background:#FBAF35!important}
+.game{border-radius:15px!important}
+.game.tiger-game{border-color:#FBAF35!important}
+.game:focus-within{border-color:#FBAF35!important;box-shadow:0 0 0 3px #FBAF35,0 0 20px 4px #FBAF3580!important}
+.scores input{background:#125993!important;border:2px solid #86BDF3!important;color:#fff!important;border-radius:12px!important;font-weight:800!important;font-size:22px!important;min-width:0;caret-color:#FBAF35}
+.scores input::placeholder{color:#dbeaff!important;opacity:1}
+.scores input:focus{border-color:#FBAF35!important;outline:2px solid #FBAF35!important;box-shadow:0 0 0 3px #FBAF3544!important}
+.scores span{color:#fff!important}
+.table-wrap{overflow:hidden!important}table th{background:#00376b!important;color:#eaf5ff!important}table td{background:#05447e!important;color:#fff!important;border-color:#286ba4!important}table tr:nth-child(even) td{background:#084b89!important}table tr.tigres-row td{background:#125c9a!important;color:#fff!important}
+.quiet,.sim-bottom-actions .quiet{color:#fff!important;background:#053a70!important;border:1px solid #8dbde7!important}
+.sim-bottom-bar{border-color:#4596d1!important;background:linear-gradient(120deg,#00356b,#015DAA)!important}
+.sim-progress-track{background:#2e72ac!important}.sim-progress-fill,#completion-fill{background:#FBAF35!important}
+.sim-bottom-actions button.share-bottom,.sim-bottom-actions .share-btn,.sim-bottom-actions .primary,.sim-share-btn,#share-toggle{background:#FBAF35!important;color:#002b59!important;border-color:#FBAF35!important}
+.sim-bottom-actions button.share-bottom *,.sim-bottom-actions .share-btn *,.sim-bottom-actions .primary *,.sim-share-btn *,#share-toggle *{color:#002b59!important}
+#visible-match-date,.fixtures-info .swipe-hint,.table-direction-hint{color:#fff!important}
+:focus-visible{outline-color:#FBAF35!important}
+/* Conservar sin cambios la regla de ocultar la cintilla durante edición móvil (V12). */
 </style></head><body><main>
 <header class="simple-header"><h1>Simulador AP26 - para que misti pasen a liguilla, pero todos lo pueden usar, comparte...</h1></header><div aria-label="Accesos a escenarios y WhatIF" class="quick-controls" id="landscape-controls"></div>
 <section aria-label="Escenarios para la liguilla" class="tigres"><button aria-controls="scenario-panel" aria-expanded="false" aria-label="Desplegar escenarios" class="scenario-toggle" id="scenario-toggle" type="button"><span>Escenarios para que misti pasen a la liguilla...</span><svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="m6 9 6 6 6-6"></path></svg></button><span class="sr-only">Posición proyectada de Tigres: <strong id="tigres-pos">14.º</strong>, <span id="tigres-points">14 pts</span></span><div class="scenario-panel" id="scenario-panel" inert=""><div class="scenario-panel-inner"><div class="scenario-grid" id="scenarios"></div></div></div></section>
@@ -225,4 +269,36 @@ document.addEventListener('DOMContentLoaded',()=>{
  window.addEventListener('resize',queue,{passive:true});
  scan();
 });
-</script></body></html>
+</script>
+<script>
+/* V12: Gestionar la cintilla durante la edicion de goles en teclado movil.
+   La delegacion funciona incluso cuando app.js recrea las tarjetas. */
+document.addEventListener('DOMContentLoaded', () => {
+  const isScoreInput = element =>
+    element instanceof HTMLInputElement &&
+    element.matches('#fixtures .scores input[data-id][data-side]');
+
+  document.addEventListener('focusin', event => {
+    if (isScoreInput(event.target)) {
+      document.documentElement.classList.add('score-field-editing');
+    }
+  });
+
+  document.addEventListener('focusout', event => {
+    if (!isScoreInput(event.target)) return;
+    requestAnimationFrame(() => {
+      // Al pasar directamente de un marcador a otro, no mostrar la cintilla.
+      if (!isScoreInput(document.activeElement)) {
+        document.documentElement.classList.remove('score-field-editing');
+      }
+    });
+  });
+
+  window.addEventListener('pageshow', () => {
+    if (!isScoreInput(document.activeElement)) {
+      document.documentElement.classList.remove('score-field-editing');
+    }
+  });
+});
+</script>
+</body></html>

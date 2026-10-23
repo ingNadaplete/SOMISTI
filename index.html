@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#f7f8fa" name="theme-color"/><meta content="Simulador de cierre del Apertura 2026. Jornadas 14 a 17 y partidos pendientes." name="description"/><title>Simulador AP26 · @theFamousJL</title><link href="style.css?v=12" rel="stylesheet"/><script defer="" src="data.js?v=5"></script><script defer="" src="scenarios.js?v=5"></script><script defer="" src="engine.js?v=5"></script><script defer="" src="app.js?v=12"></script><script defer="" src="share.js?v=5"></script><style>
+/* Ajustes Octubre 2026: index.html autocontenido, sin cambiar archivos JS/CSS externos. */
+.brand{min-width:0;flex:1}.brand>div{min-width:0}.brand h1{font-size:clamp(16px,2.4vw,25px);line-height:1.17;max-width:340px;text-wrap:balance}
+.header-actions{flex-shrink:0}
+.tigres{display:block;padding:20px 24px}.tigres-title{width:100%;min-width:0}.tigres-summary{min-width:0}.tigres-title .sim-tag{margin-left:auto}
+.scenario-toggle{display:inline-flex;justify-content:center;align-items:center;gap:6px;margin-left:auto;padding:9px 12px;border:1px solid #e4ddc9;border-radius:11px;background:#fff;color:#655b45;font-size:12px;font-weight:650;white-space:nowrap;min-height:40px}
+.scenario-toggle svg{transition:transform .28s ease}.tigres.is-open .scenario-toggle svg{transform:rotate(180deg)}
+.scenario-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .3s ease,opacity .25s ease;visibility:hidden}
+.tigres.is-open .scenario-panel{grid-template-rows:1fr;opacity:1;visibility:visible}
+.scenario-panel-inner{min-height:0;overflow:hidden}.scenario-panel .scenario-grid{margin-top:0;padding-top:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tigres.is-open .scenario-panel .scenario-grid{padding-top:18px}
+.scenario{min-width:0}.scenario-toggle:focus-visible{outline:3px solid #2a85c8;outline-offset:3px}
+/* Los nombres permanecen en el DOM de app.js, pero no se muestran en las tarjetas. */
+.game-line{grid-template-columns:minmax(0,1fr) minmax(100px,116px) minmax(0,1fr);gap:6px}
+.game-line .club{justify-content:center;min-width:0}.game-line .club.away{justify-content:center}
+.game-line .club img{width:60px;height:60px;max-width:100%;object-fit:contain}
+.game-line .club span{display:none}
+.game{padding-top:15px;padding-bottom:15px}.game-line .scores{min-width:0}
+/* Selección suave, sin mover el nav ni las tarjetas. */
+#rounds button{transition:background-color .23s ease,color .23s ease,box-shadow .23s ease,transform .23s ease}
+#rounds button.active{box-shadow:0 2px 9px #175b4624}
+#rounds button.round-picked{animation:round-pick .26s ease-out}
+@keyframes round-pick{0%{transform:scale(.95)}65%{transform:scale(1.025)}100%{transform:scale(1)}}
+@media(max-width:900px){.game-line .club img{width:54px;height:54px}}
+@media(max-width:700px){
+ .brand h1{font-size:clamp(15px,4.2vw,19px);max-width:240px}
+ .tigres{padding:17px}.tigres-title{gap:10px}.tigres-title img{width:45px;height:45px}
+ .tigres-title .sim-tag{display:none}.scenario-toggle{margin-left:auto;padding:9px;min-width:39px}
+ .scenario-toggle-label{display:none}.scenario-panel .scenario-grid{gap:8px}
+ .scenario-panel .scenario{padding:10px 8px}
+ .game-line{grid-template-columns:minmax(0,1fr) minmax(96px,110px) minmax(0,1fr);gap:5px}
+ .game-line .club img{width:48px;height:48px}
+}
+@media(max-width:380px){.brand h1{font-size:15px}.brand{gap:7px}.header-actions{gap:4px}.header-actions .quiet{min-width:39px;padding:8px}.avatar-icon{width:36px;height:36px}.game-line{grid-template-columns:minmax(0,1fr) 98px minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.scenario-panel,.scenario-toggle svg,#rounds button{transition:none!important}#rounds button.round-picked{animation:none!important}}
+
+/* Diseño v2: editor móvil, barra de avance y acceso a compartir */
+header{gap:12px}.brand h1{max-width:none}
+.tigres{padding:9px 16px;border-radius:12px}.scenario-toggle{display:flex;width:100%;min-height:36px;justify-content:space-between;align-items:center;text-align:left;border:0;background:transparent;padding:4px 6px;margin:0;color:inherit;font-size:13px;font-weight:600;white-space:normal;gap:12px}.scenario-toggle svg{flex-shrink:0;width:18px;height:18px;transition:transform .24s ease}.tigres.is-open .scenario-toggle svg{transform:rotate(180deg)}.scenario-panel{transition:grid-template-rows .23s ease,opacity .2s ease}.tigres.is-open .scenario-panel .scenario-grid{padding-top:10px}.scenario-toggle:focus-visible{outline:2px solid #278059}
+.game-line{grid-template-columns:minmax(0,1fr) minmax(104px,126px) minmax(0,1fr);gap:6px}.game-line .club img{height:104px;width:104px;max-width:100%;object-fit:contain}.game-line .club{min-width:0}.game{overflow:visible;transition:box-shadow .18s ease,border-color .18s ease}.game:focus-within{position:relative;z-index:2;box-shadow:0 0 0 3px #20d779,0 0 18px 5px #25e48085,0 0 32px 8px #25e48050;border-color:#17ac5d}.game-line .scores input:focus{outline:3px solid #0b9c58;outline-offset:2px;box-shadow:0 0 0 5px #33e28b55,0 0 18px #29de85}
+.sim-bottom-bar{position:sticky;bottom:0;z-index:30;background:color-mix(in srgb,white 96%,#e4f4ea);border:1px solid #d7e4da;border-bottom:0;border-radius:15px 15px 0 0;padding:12px 15px max(12px,env(safe-area-inset-bottom));box-shadow:0 -5px 25px #1629231c;backdrop-filter:blur(12px);margin:24px 0 0}.sim-progress-top{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#285139;font-weight:700;margin-bottom:7px}.sim-progress-track{height:9px;border-radius:20px;background:#dfeae2;overflow:hidden}.sim-progress-track>div{height:100%;width:0%;border-radius:inherit;background:linear-gradient(90deg,#1e9d54,#42dd77);transition:width .32s ease}.sim-bottom-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:11px}.sim-bottom-actions .header-actions{display:contents}.sim-bottom-actions #reset{order:0}.sim-bottom-actions #share-toggle{order:1;margin-left:auto;background:#145e3b;color:white;border-color:#145e3b}.sim-bottom-actions #share-toggle svg{width:18px;height:18px}.sim-bottom-actions #share-menu{position:absolute;bottom:calc(100% - 4px);top:auto;right:12px;z-index:45;min-width:190px}.sim-bottom-actions button{white-space:nowrap}
+@media(max-width:900px){.game-line .club img{height:90px;width:90px}}
+@media(max-width:700px){.tigres{padding:8px 10px}.scenario-toggle{font-size:12px}.game-line{grid-template-columns:minmax(0,1fr) minmax(90px,108px) minmax(0,1fr);gap:3px}.game-line .club img{width:min(23vw,82px);height:min(23vw,82px)}.game{padding-left:9px;padding-right:9px}.sim-bottom-bar{margin-left:-2px;margin-right:-2px;padding:10px 11px max(10px,env(safe-area-inset-bottom))}.sim-bottom-actions .quiet{font-size:12px;padding:9px 10px}}
+@media(max-width:380px){.game-line{grid-template-columns:minmax(0,1fr) 94px minmax(0,1fr)}.game-line .club img{width:min(22vw,72px);height:min(22vw,72px)}.sim-bottom-actions .quiet{font-size:11px;padding:9px 7px}}
+@media(prefers-reduced-motion:reduce){.game,.game-line .scores input,.sim-progress-track>div{transition:none!important}}
+
+/* Ajustes v3 — cabecera simple, logos alineados y firma centrada */
+.simple-header{display:block;padding-block:19px 16px}
+.simple-header h1{font-size:clamp(17px,2.65vw,27px);line-height:1.3;max-width:1050px;margin:0;overflow-wrap:break-word;text-wrap:pretty}
+/* Celdas simétricas de anchura fija: los escudos tienen el mismo centro óptico de contenedor. */
+.game-line{grid-template-columns:minmax(0,1fr) minmax(104px,126px) minmax(0,1fr);align-items:center}
+.game-line .club,.game-line .club.away{display:flex;justify-content:center;align-items:center;width:100%;min-width:0;min-height:110px;flex-direction:row;padding:0;margin:0}
+.game-line .club img{display:block;flex:0 0 auto;width:104px;height:104px;max-width:100%;max-height:100%;object-fit:contain;object-position:center center;margin:0 auto}
+.sim-bottom-actions{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;column-gap:12px}
+.sim-bottom-actions .header-actions{display:contents}
+.sim-bottom-actions #reset{grid-column:1;grid-row:1;justify-self:start;order:initial}
+.sim-bottom-actions #share-toggle{grid-column:3;grid-row:1;justify-self:end;margin-left:0;order:initial}
+.social-signature{grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;color:#121a20;font-size:12px;font-weight:800}
+.signature-x{width:19px;height:19px;flex:0 0 19px}
+.signature-avatar{width:32px;height:32px;flex:0 0 32px;object-fit:cover;border-radius:50%;border:1px solid #d4dce0}
+@media(max-width:900px){.game-line .club,.game-line .club.away{min-height:96px}.game-line .club img{width:90px;height:90px}}
+@media(max-width:700px){.simple-header{padding-block:13px}.simple-header h1{font-size:clamp(16px,4vw,21px)}.game-line .club,.game-line .club.away{min-height:84px}.game-line .club img{width:min(23vw,82px);height:min(23vw,82px)}.sim-bottom-actions{column-gap:6px}.social-signature{gap:4px;font-size:10px}.signature-x{width:14px;height:14px;flex-basis:14px}.signature-avatar{width:25px;height:25px;flex-basis:25px}.sim-bottom-actions .quiet{font-size:10px;padding:8px 6px}}
+@media(max-width:430px){.sim-bottom-actions{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:4px}.social-signature{flex-wrap:wrap;max-width:83px;row-gap:2px}.signature-handle{width:100%;text-align:center;font-size:9px}.sim-bottom-actions #reset{max-width:100%;white-space:normal;text-align:center;line-height:1.2}.sim-bottom-actions #share-toggle{max-width:100%;white-space:normal;text-align:center;line-height:1.2}.game-line .club,.game-line .club.away{min-height:75px}.game-line .club img{width:min(22vw,72px);height:min(22vw,72px)}}
+
+/* V7: Vertical uses the original V3 layout. Horizontal uses the V6 arrangement. */
+.quick-controls{display:none}
+.landscape-help,.swipe-hint{display:none}
+@media (orientation:landscape) and (min-width:560px){
+ main{max-width:1650px;padding-top:clamp(8px,1.5vw,20px)!important}
+ header.simple-header{padding-top:8px!important;padding-bottom:6px!important;margin-bottom:6px!important}
+ .quick-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);align-items:start;gap:8px;margin-bottom:10px;min-width:0}
+ .quick-controls>.tigres,.quick-controls>.whatif-control{min-width:0}
+ .quick-controls>.tigres{padding:1px 8px!important;margin:0!important}
+ .quick-controls .scenario-toggle{font-size:clamp(11px,1.25vw,14px)!important;min-height:36px!important;gap:5px}
+ .quick-controls .scenario-toggle span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .quick-controls .scenario-toggle span::before{content:'• ';}
+ .quick-controls .whatif-control{padding:1px 10px!important;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;column-gap:10px;min-height:38px!important;margin:0!important}
+ .quick-controls .whatif-control label{font-size:clamp(13px,1.5vw,17px)!important}
+ .quick-controls .whatif-control>p,.quick-controls .whatif-control>.whatif-examples{display:none!important}
+ .landscape-help{display:block;max-width:100%;font-size:12px;color:#47705a}
+ .landscape-help summary{cursor:pointer;font-size:12px;font-weight:700}
+ .landscape-help[open]{flex-basis:100%}
+ .landscape-help p{margin:5px 2px;font-size:12px;line-height:1.35}
+ .layout{display:flex!important;flex-direction:column;gap:15px!important;min-width:0}
+ .layout>.matches,.layout>.standings{width:100%;min-width:0;grid-column:auto!important;grid-row:auto!important}
+ .section-head{margin-bottom:6px}
+ #rounds{width:100%;padding:3px 5px!important;min-height:0!important;margin-bottom:4px!important;gap:3px}
+ #rounds button{min-height:31px!important;padding:4px 10px!important;font-size:12px!important}
+ .swipe-hint{display:block;color:#657b78;font-size:11px;font-weight:700;text-align:right;margin:3px 5px 7px}
+ .layout>.standings{margin-top:3px}
+ #fixtures{display:flex;align-items:stretch;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding:5px 5px 12px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+ #fixtures>.game{flex:0 0 clamp(245px,28vw,360px);margin:0;scroll-snap-align:start;align-self:stretch;min-width:0;display:flex;flex-direction:column;justify-content:center}
+ #fixtures>.day{flex:0 0 85px;min-width:85px;align-self:center;margin:0!important;line-height:1.5;white-space:normal;font-size:11px}
+ #fixtures .game-line{grid-template-columns:minmax(0,1fr) minmax(94px,116px) minmax(0,1fr)!important}
+ #fixtures .game-line .club img{width:min(7.8vw,104px);height:min(7.8vw,104px)}
+ .sim-bottom-bar{padding:6px 12px max(6px,env(safe-area-inset-bottom))!important;margin-top:12px}
+ .sim-progress-top{font-size:10px;margin-bottom:3px}
+ .sim-progress-track{height:5px}
+ .sim-bottom-actions{margin-top:5px;gap:8px}
+ .sim-bottom-actions .quiet{padding:6px 9px!important;min-height:34px;font-size:12px!important}
+ .signature-avatar{width:28px!important;height:28px!important}
+ .signature-handle{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){#fixtures{scroll-behavior:auto}}
+
+/* V8: orientación horizontal; fecha fija que sigue al primer partido visible. */
+.fixtures-info,.standings-scroll-hint{display:none}
+@media (orientation:landscape) and (min-width:560px){
+ .quick-controls{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+ .quick-controls .whatif-control{flex-wrap:nowrap!important;gap:12px;align-items:center!important}
+ .quick-controls .whatif-control label{flex:0 0 auto;white-space:nowrap}
+ .quick-controls .landscape-help{display:flex;flex:1;flex-direction:column;justify-content:center;gap:1px;min-width:0;line-height:1.18;font-size:clamp(9px,.85vw,12px)}
+ .quick-controls .landscape-help span{display:block}
+ .fixtures-info{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 5px 5px;min-height:24px}
+ #visible-match-date{font-size:12px;font-weight:750;letter-spacing:.12em;color:#81909c;text-transform:uppercase;white-space:nowrap}
+ .fixtures-info .swipe-hint{margin:0;display:block}
+ #fixtures>.day{display:none!important}
+ .standings-scroll-hint{display:block;text-align:right;color:#657b78;font-weight:700;font-size:11px;margin:6px 6px 0}
+}
+
+/* V9: controles de jornadas en la misma línea, exclusivamente horizontal. */
+.landscape-match-title,.table-direction-hint{display:none}
+@media (orientation:landscape) and (min-width:560px){
+ .layout>.matches{display:grid!important;grid-template-columns:minmax(250px,23%) minmax(0,1fr);align-items:center;column-gap:12px;row-gap:4px;position:relative;padding-right:23px}
+ .layout>.matches>.section-head{grid-column:1;grid-row:1;margin:0!important;display:flex;align-items:center;gap:8px;min-width:0}
+ .layout>.matches>.section-head h2{font-size:clamp(17px,1.6vw,24px);white-space:nowrap;line-height:1.2}
+ .layout>.matches>.section-head #progress{margin-left:auto;white-space:nowrap;font-size:12px}
+ .portrait-match-title{display:none}
+ .landscape-match-title{display:inline}
+ .layout>.matches>#rounds{grid-column:2;grid-row:1;min-width:0;max-width:100%;overflow-x:auto!important;display:flex;align-items:stretch;flex-wrap:nowrap;scrollbar-width:thin;margin:0!important;white-space:nowrap}
+ .layout>.matches>#rounds button{flex:1 0 auto;min-width:0!important;white-space:nowrap;padding:4px clamp(3px,.65vw,10px)!important}
+ .layout>.matches>#rounds:has(button:nth-child(10)) button{font-size:10px!important;padding:3px 5px!important;flex:0 0 auto}
+ .layout>.matches>.fixtures-info,.layout>.matches>#fixtures,.layout>.matches>.standings-scroll-hint{grid-column:1/-1;min-width:0}
+ .layout>.matches>.standings-scroll-hint{display:none!important}
+ .layout>.matches>.table-direction-hint{display:block;position:absolute;right:0;top:86px;writing-mode:vertical-rl;text-orientation:mixed;white-space:nowrap;color:#627b75;font-weight:700;font-size:clamp(11px,1.1vw,16px);pointer-events:none}
+}
+
+/* V10: only landscape — more touch-friendly rounds, compact match cards. */
+@media (orientation:landscape) and (min-width:560px){
+ .layout>.matches>#rounds button{flex:0 0 auto!important;min-width:48px!important;min-height:38px!important;padding:7px 12px!important;font-size:13px!important;touch-action:manipulation}
+ .layout>.matches>#rounds:has(button:nth-child(10)) button{min-width:45px!important;min-height:38px!important;padding:7px 10px!important;font-size:12px!important}
+ #fixtures>.game{min-height:142px!important;padding-top:8px!important;padding-bottom:8px!important;justify-content:center}
+ #fixtures .game-line .club,#fixtures .game-line .club.away{min-height:0!important}
+ #fixtures .game-line .club img{width:min(7vw,86px)!important;height:min(7vw,86px)!important}
+ #fixtures .game-line{min-height:0!important;gap:4px!important}
+ .layout>.matches>.table-direction-hint{font-size:clamp(11px,1.1vw,16px)}
+}
+</style></head><body><main>
+<header class="simple-header"><h1>Simulador AP26 - para que misti pasen a liguilla, pero todos lo pueden usar, comparte...</h1></header><div aria-label="Accesos a escenarios y WhatIF" class="quick-controls" id="landscape-controls"></div>
+<section aria-label="Escenarios para la liguilla" class="tigres"><button aria-controls="scenario-panel" aria-expanded="false" aria-label="Desplegar escenarios" class="scenario-toggle" id="scenario-toggle" type="button"><span>Escenarios para que misti pasen a la liguilla...</span><svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="m6 9 6 6 6-6"></path></svg></button><span class="sr-only">Posición proyectada de Tigres: <strong id="tigres-pos">14.º</strong>, <span id="tigres-points">14 pts</span></span><div class="scenario-panel" id="scenario-panel" inert=""><div class="scenario-panel-inner"><div class="scenario-grid" id="scenarios"></div></div></div></section>
+<div class="layout"><section class="matches"><div class="section-head"><h2><span class="portrait-match-title">Partidos</span><span class="landscape-match-title">Partidos ↓ Jornadas →</span></h2><span id="progress"></span></div><div class="whatif-control"><label><input id="whatif" type="checkbox"/><span>#WhatIF...</span></label><p>Actívalo, si quieres modificar un marcador ya pasado, por ejemplo:</p><div class="whatif-examples"><p>• Que hubiera pasado si Brunetta no se hubiera hecho expulsar<br/>• Que hubiera pasado si Rafa Guerrero fuera capo en la central</p></div><div class="whatif-help landscape-help"><span>Actívalo, si quieres modificar un marcador ya pasado, por ejemplo:</span><span>• Que hubiera pasado si Brunetta no se hubiera hecho expulsar</span><span>• Que hubiera pasado si Rafa Guerrero fuera capo en la central</span></div></div><nav aria-label="Jornadas" id="rounds"></nav><div class="fixtures-info"><time id="visible-match-date" aria-live="off"></time><span aria-hidden="true" class="swipe-hint">Deslizar para más partidos →</span></div><div id="fixtures"></div><p class="standings-scroll-hint" aria-hidden="true">↓ Deslizar abajo para ver la tabla general</p><span class="table-direction-hint" aria-hidden="true">La Tabla→</span></section>
+<section class="standings"><div class="section-head"><h2>Tabla general</h2><span id="table-state">Base oficial</span></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Club</th><th>PJ</th><th class="extra">GF</th><th class="extra">GC</th><th>DG</th><th>PTS</th></tr></thead><tbody id="table"></tbody></table></div><div class="legend"><span><i></i> Liguilla · 1–8</span><span id="tie-note"></span></div></section></div>
+<footer><span>Corte · 22 oct 2026</span><a href="fuentes.html" rel="noopener" target="_blank">Datos y fuentes ↗</a><span>No oficial</span></footer><div aria-label="Progreso y acciones del simulador" class="sim-bottom-bar"><div class="sim-progress-top"><span id="completion-label">Partidos simulados: 0 de 38</span><span id="completion-percent">0%</span></div><div aria-label="Partidos pendientes simulados" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="sim-progress-track" id="completion-meter" role="progressbar"><div id="completion-fill"></div></div><div class="sim-bottom-actions"><div aria-label="X, avatar de @theFamousJL" class="social-signature"><svg aria-label="X" class="signature-x" role="img" viewbox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.77L23.2 22h-6.26l-4.91-7.42L5.54 22H2.4l7.28-8.34L1.8 2h6.42l4.44 6.78L18.9 2Zm-1.1 18h1.74L7.27 3.89H5.41Z" fill="currentColor"></path></svg><img alt="Avatar de @theFamousJL" class="signature-avatar" src="assets/avatar.png"/><span class="signature-handle">@theFamousJL</span></div><div class="header-actions"><button aria-controls="share-menu" aria-expanded="false" aria-label="Compartir simulación" class="quiet" id="share-toggle"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="18"><path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7"></path></svg><span>Compartir con panas</span></button><div hidden="" id="share-menu"><button data-share="image">Imagen <span>PNG</span></button><button data-share="json">JSON <span>↓</span></button><button data-share="link">Enlace <span>↗</span></button></div><button aria-label="Restablecer todos los marcadores" class="quiet" id="reset">↺ <span>Restablecer simulador</span></button></div></div></div><div aria-live="polite" class="sr-only" id="live"></div>
+<span class="sr-only" id="save-status" role="status"></span><dialog id="image-dialog"><form method="dialog"><div class="dialog-heading"><h2>Compartir imagen</h2><button aria-label="Cerrar imagen" class="close-button">×</button></div><label for="simulation-name">Nombre de la simulación</label><input autocomplete="off" id="simulation-name" maxlength="80" placeholder="Mi simulación"/><label for="simulator-handle">Tu @ en X <span class="optional">· opcional</span></label><input autocapitalize="none" autocomplete="off" id="simulator-handle" maxlength="16" placeholder="@usuario" spellcheck="false"/><button class="quiet" id="export-image" type="button">Descargar imagen</button><p id="image-status" role="status"></p></form></dialog><dialog id="link-dialog"><form method="dialog"><div class="dialog-heading"><h2>Compartir enlace</h2><button aria-label="Cerrar" class="close-button">×</button></div><div id="host-field"><label for="public-url">URL de tu GitHub Pages</label><input autocomplete="url" id="public-url" placeholder="https://usuario.github.io/repositorio/" type="url"/><button class="quiet" id="build-link" type="button">Crear enlace</button></div><label class="sr-only" for="share-url">Enlace de la simulación</label><textarea id="share-url" placeholder="Enlace de tu simulación" readonly="" rows="3"></textarea><button class="quiet" id="copy-link" type="button">Copiar enlace</button><p id="share-status" role="status"></p></form></dialog></main><script>
+/* Los scripts con defer terminan antes de DOMContentLoaded. */
+document.addEventListener('DOMContentLoaded',()=>{
+  const progress=document.getElementById('progress');
+  const updateMeter=()=>{const parts=(progress?.textContent||'0 / 38').match(/(\d+)\s*\/\s*(\d+)/);if(!parts)return;const done=+parts[1],total=+parts[2],pct=total?Math.round(done/total*100):100;document.getElementById('completion-label').textContent=`Partidos simulados: ${done} de ${total} · Faltan ${total-done}`;document.getElementById('completion-percent').textContent=pct+'%';document.getElementById('completion-fill').style.width=pct+'%';document.getElementById('completion-meter').setAttribute('aria-valuenow',pct)};
+  new MutationObserver(updateMeter).observe(progress,{childList:true,characterData:true,subtree:true});updateMeter();
+  document.getElementById('reset').addEventListener('click',e=>{if(!window.confirm('¿Estás seguro de echar por la borda todo, como Ángel Correa?')){e.stopImmediatePropagation();e.preventDefault()}},true);
+  document.querySelectorAll('#fixtures input[data-side]').forEach(el=>el.setAttribute('inputmode','numeric'));
+  const tigres=document.querySelector('.tigres');
+  const toggle=document.getElementById('scenario-toggle');
+  const panel=document.getElementById('scenario-panel');
+  toggle.addEventListener('click',()=>{
+    const open=tigres.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'Ocultar escenarios de Tigres':'Mostrar escenarios de Tigres');
+    panel.inert=!open;
+  });
+  document.getElementById('rounds').addEventListener('click',event=>{
+    const button=event.target.closest('button[data-round]');
+    if(!button)return;
+    button.classList.remove('round-picked');
+    void button.offsetWidth;
+    button.classList.add('round-picked');
+  });
+});
+</script><script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const quick=document.getElementById('landscape-controls');
+  const scenario=document.querySelector('section.tigres');
+  const matches=document.querySelector('.layout .matches');
+  const whatif=document.querySelector('.whatif-control');
+  const sectionHead=matches?.querySelector('.section-head');
+  const header=document.querySelector('header.simple-header');
+  if(!quick||!scenario||!matches||!whatif||!sectionHead||!header)return;
+  const landscape=window.matchMedia('(orientation: landscape) and (min-width: 560px)');
+  const place=()=>{
+    const active=document.activeElement;
+    const focusedInside=(scenario.contains(active)||whatif.contains(active))?active:null;
+    if(landscape.matches){quick.append(scenario,whatif)}
+    else {header.insertAdjacentElement('afterend',scenario);sectionHead.insertAdjacentElement('afterend',whatif)}
+    if(focusedInside&&document.activeElement!==focusedInside)focusedInside.focus({preventScroll:true});
+  };
+  place();landscape.addEventListener('change',place);
+});
+</script><script>
+/* Track the date of the first partially visible match in the horizontal fixtures carousel. */
+document.addEventListener('DOMContentLoaded',()=>{
+ const fixtures=document.getElementById('fixtures');
+ const label=document.getElementById('visible-match-date');
+ const horizontal=window.matchMedia('(orientation: landscape) and (min-width: 560px)');
+ if(!fixtures||!label)return;
+ let days=[];let raf=0;
+ const scan=()=>{
+   let current='';days=[];
+   for(const node of fixtures.children){
+     if(node.classList.contains('day'))current=node.textContent.trim();
+     else if(node.classList.contains('game'))days.push({element:node,date:current});
+   }
+   update();
+ };
+ const update=()=>{
+   if(!horizontal.matches){label.textContent='';return;}
+   const edge=fixtures.getBoundingClientRect().left+5;
+   const first=days.find(item=>item.element.getBoundingClientRect().right>edge+1);
+   label.textContent=first?.date||days.at(-1)?.date||'';
+ };
+ const queue=()=>{if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{raf=0;update()})};
+ new MutationObserver(scan).observe(fixtures,{childList:true});
+ fixtures.addEventListener('scroll',queue,{passive:true});
+ horizontal.addEventListener('change',queue);
+ window.addEventListener('resize',queue,{passive:true});
+ scan();
+});
+</script></body></html>

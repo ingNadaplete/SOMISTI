@@ -1,5 +1,5 @@
 {
-  "cutoff": "22 oct 2026",
+  "cutoff": "24 oct 2026",
   "teams": [
     {
       "id": 1,
@@ -18,19 +18,19 @@
       "id": 7,
       "name": "Guadalajara",
       "rank": 2,
-      "pj": 13,
-      "pg": 6,
+      "pj": 14,
+      "pg": 7,
       "pe": 5,
       "pp": 2,
-      "gf": 20,
+      "gf": 21,
       "gc": 12,
-      "pts": 23,
-      "awayGF": 9
+      "pts": 26,
+      "awayGF": 10
     },
     {
       "id": 12566,
       "name": "Cruz Azul",
-      "rank": 3,
+      "rank": 4,
       "pj": 13,
       "pg": 7,
       "pe": 2,
@@ -43,27 +43,27 @@
     {
       "id": 17,
       "name": "Toluca",
-      "rank": 4,
-      "pj": 13,
+      "rank": 3,
+      "pj": 14,
       "pg": 6,
-      "pe": 4,
+      "pe": 5,
       "pp": 3,
-      "gf": 28,
-      "gc": 18,
-      "pts": 22,
-      "awayGF": 10
+      "gf": 29,
+      "gc": 19,
+      "pts": 23,
+      "awayGF": 11
     },
     {
       "id": 9,
       "name": "León",
       "rank": 5,
-      "pj": 13,
+      "pj": 14,
       "pg": 6,
-      "pe": 3,
+      "pe": 4,
       "pp": 4,
-      "gf": 20,
-      "gc": 17,
-      "pts": 21,
+      "gf": 21,
+      "gc": 18,
+      "pts": 22,
       "awayGF": 8
     },
     {
@@ -83,12 +83,12 @@
       "id": 14,
       "name": "Monterrey",
       "rank": 7,
-      "pj": 12,
+      "pj": 13,
       "pg": 6,
       "pe": 2,
-      "pp": 4,
+      "pp": 5,
       "gf": 23,
-      "gc": 17,
+      "gc": 18,
       "pts": 20,
       "awayGF": 10
     },
@@ -121,7 +121,7 @@
     {
       "id": 5,
       "name": "Tijuana",
-      "rank": 10,
+      "rank": 11,
       "pj": 12,
       "pg": 4,
       "pe": 5,
@@ -134,28 +134,28 @@
     {
       "id": 18,
       "name": "Universidad Nacional",
-      "rank": 11,
-      "pj": 13,
+      "rank": 12,
+      "pj": 14,
       "pg": 4,
-      "pe": 4,
+      "pe": 5,
       "pp": 5,
-      "gf": 19,
-      "gc": 22,
-      "pts": 16,
+      "gf": 20,
+      "gc": 23,
+      "pts": 17,
       "awayGF": 10
     },
     {
       "id": 11220,
       "name": "Club Atlético de San Luis",
-      "rank": 12,
-      "pj": 13,
-      "pg": 4,
+      "rank": 10,
+      "pj": 14,
+      "pg": 5,
       "pe": 4,
       "pp": 5,
-      "gf": 18,
+      "gf": 19,
       "gc": 22,
-      "pts": 16,
-      "awayGF": 9
+      "pts": 19,
+      "awayGF": 10
     },
     {
       "id": 11550,
@@ -174,25 +174,25 @@
       "id": 16,
       "name": "Tigres de la U.A.N.L.",
       "rank": 14,
-      "pj": 13,
+      "pj": 14,
       "pg": 3,
-      "pe": 5,
+      "pe": 6,
       "pp": 5,
-      "gf": 14,
-      "gc": 18,
-      "pts": 14,
-      "awayGF": 5
+      "gf": 15,
+      "gc": 19,
+      "pts": 15,
+      "awayGF": 6
     },
     {
       "id": 14257,
       "name": "Atlante",
       "rank": 15,
-      "pj": 13,
+      "pj": 14,
       "pg": 3,
       "pe": 5,
-      "pp": 5,
+      "pp": 6,
       "gf": 14,
-      "gc": 19,
+      "gc": 20,
       "pts": 14,
       "awayGF": 7
     },
@@ -213,27 +213,27 @@
       "id": 29,
       "name": "Necaxa",
       "rank": 17,
-      "pj": 13,
+      "pj": 14,
       "pg": 2,
-      "pe": 3,
+      "pe": 4,
       "pp": 8,
-      "gf": 15,
-      "gc": 26,
-      "pts": 9,
+      "gf": 16,
+      "gc": 27,
+      "pts": 10,
       "awayGF": 7
     },
     {
       "id": 11790,
       "name": "FC Juárez",
       "rank": 18,
-      "pj": 13,
+      "pj": 14,
       "pg": 1,
-      "pe": 1,
+      "pe": 2,
       "pp": 11,
-      "gf": 8,
-      "gc": 32,
-      "pts": 4,
-      "awayGF": 3
+      "gf": 9,
+      "gc": 33,
+      "pts": 5,
+      "awayGF": 4
     }
   ],
   "fixtures": [
@@ -1507,55 +1507,55 @@
       "round": 14,
       "home": 29,
       "away": 11790,
-      "hg": null,
-      "ag": null,
+      "hg": 1,
+      "ag": 1,
       "date": "23/10/2026",
       "time": "19:00",
-      "status": ""
+      "status": "Marcador Final"
     },
     {
       "id": 155053,
       "round": 14,
       "home": 14257,
       "away": 11220,
-      "hg": null,
-      "ag": null,
+      "hg": 0,
+      "ag": 1,
       "date": "23/10/2026",
       "time": "21:00",
-      "status": ""
+      "status": "Marcador Final"
     },
     {
       "id": 155056,
       "round": 14,
       "home": 9,
       "away": 17,
-      "hg": null,
-      "ag": null,
+      "hg": 1,
+      "ag": 1,
       "date": "24/10/2026",
       "time": "17:00",
-      "status": ""
+      "status": "Marcador Final"
     },
     {
       "id": 155058,
       "round": 14,
       "home": 14,
       "away": 7,
-      "hg": null,
-      "ag": null,
+      "hg": 0,
+      "ag": 1,
       "date": "24/10/2026",
       "time": "19:00",
-      "status": ""
+      "status": "Marcador Final"
     },
     {
       "id": 155059,
       "round": 14,
       "home": 18,
       "away": 16,
-      "hg": null,
-      "ag": null,
+      "hg": 1,
+      "ag": 1,
       "date": "24/10/2026",
       "time": "21:10",
-      "status": ""
+      "status": "Marcador Final"
     },
     {
       "id": 155061,
@@ -1920,5 +1920,13 @@
       "time": "19:00",
       "status": ""
     }
-  ]
+  ],
+  "confirmedUpdates": [
+    155051,
+    155053,
+    155056,
+    155058,
+    155059
+  ],
+  "updateSource": "Cinco resultados de jornada 14 proporcionados por el usuario mediante captura, incorporados el 25 oct 2026."
 }

@@ -1,17 +1,17 @@
 {
-  "cutoff": "25 oct 2026",
+  "cutoff": "28 oct 2026",
   "teams": [
     {
       "id": 1,
       "name": "América",
       "rank": 1,
-      "pj": 13,
+      "pj": 14,
       "pg": 8,
-      "pe": 3,
+      "pe": 4,
       "pp": 2,
-      "gf": 33,
-      "gc": 18,
-      "pts": 27,
+      "gf": 34,
+      "gc": 19,
+      "pts": 28,
       "awayGF": 21
     },
     {
@@ -82,7 +82,7 @@
     {
       "id": 14,
       "name": "Monterrey",
-      "rank": 7,
+      "rank": 8,
       "pj": 13,
       "pg": 6,
       "pe": 2,
@@ -121,15 +121,15 @@
     {
       "id": 5,
       "name": "Tijuana",
-      "rank": 8,
-      "pj": 13,
+      "rank": 7,
+      "pj": 14,
       "pg": 5,
-      "pe": 5,
+      "pe": 6,
       "pp": 3,
-      "gf": 21,
-      "gc": 17,
-      "pts": 20,
-      "awayGF": 7
+      "gf": 22,
+      "gc": 18,
+      "pts": 21,
+      "awayGF": 8
     },
     {
       "id": 18,
@@ -1606,11 +1606,11 @@
       "round": 7,
       "home": 1,
       "away": 5,
-      "hg": null,
-      "ag": null,
+      "hg": 1,
+      "ag": 1,
       "date": "28/10/2026",
       "time": "21:00",
-      "status": ""
+      "status": "Marcador Final"
     },
     {
       "id": 155068,
@@ -1930,7 +1930,8 @@
     155061,
     155062,
     155064,
-    155065
+    155065,
+    155080
   ],
-  "updateSource": "Jornada 14 completa según las capturas proporcionadas por el usuario; actualización del 27 oct 2026."
+  "updateSource": "Jornada 14 completa y América 1–1 Tijuana (J7, 28 oct), según capturas proporcionadas por el usuario; actualización del 29 oct 2026."
 }

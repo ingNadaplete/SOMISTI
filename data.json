@@ -1,5 +1,5 @@
 {
-  "cutoff": "8 nov 2026",
+  "cutoff": "9 nov 2026",
   "teams": [
     {
       "id": 12566,
@@ -31,14 +31,14 @@
       "id": 7,
       "name": "Guadalajara",
       "rank": 3,
-      "pj": 15,
+      "pj": 16,
       "pg": 8,
-      "pe": 5,
+      "pe": 6,
       "pp": 2,
-      "gf": 25,
-      "gc": 14,
-      "pts": 29,
-      "awayGF": 10
+      "gf": 26,
+      "gc": 15,
+      "pts": 30,
+      "awayGF": 11
     },
     {
       "id": 17,
@@ -80,9 +80,22 @@
       "awayGF": 12
     },
     {
+      "id": 9,
+      "name": "León",
+      "rank": 7,
+      "pj": 16,
+      "pg": 6,
+      "pe": 5,
+      "pp": 5,
+      "gf": 23,
+      "gc": 21,
+      "pts": 23,
+      "awayGF": 9
+    },
+    {
       "id": 11,
       "name": "Pachuca",
-      "rank": 7,
+      "rank": 8,
       "pj": 16,
       "pg": 6,
       "pe": 4,
@@ -95,7 +108,7 @@
     {
       "id": 5,
       "name": "Tijuana",
-      "rank": 8,
+      "rank": 9,
       "pj": 16,
       "pg": 5,
       "pe": 7,
@@ -104,19 +117,6 @@
       "gc": 22,
       "pts": 22,
       "awayGF": 11
-    },
-    {
-      "id": 9,
-      "name": "León",
-      "rank": 9,
-      "pj": 15,
-      "pg": 6,
-      "pe": 4,
-      "pp": 5,
-      "gf": 22,
-      "gc": 20,
-      "pts": 22,
-      "awayGF": 9
     },
     {
       "id": 14,
@@ -1804,11 +1804,11 @@
       "round": 16,
       "home": 9,
       "away": 7,
-      "hg": null,
-      "ag": null,
+      "hg": 1,
+      "ag": 1,
       "date": "8/11/2026",
-      "time": "20:00",
-      "status": ""
+      "time": "20:10",
+      "status": "Marcador Final"
     },
     {
       "id": 155072,
@@ -1948,7 +1948,8 @@
     155089,
     155091,
     155092,
-    155094
+    155094,
+    155095
   ],
-  "updateSource": "Jornada 14 completa y América 1–1 Tijuana (J7, 28 oct), según capturas proporcionadas por el usuario; actualización del 29 oct 2026. Se incorporaron seis partidos finalizados de J15 según la captura del 31 oct 2026. Actualización del 8 nov 2026 según dos capturas del usuario: jornada 15 completa y ocho resultados de jornada 16."
+  "updateSource": "Jornada 14 completa y América 1–1 Tijuana (J7, 28 oct), según capturas proporcionadas por el usuario; actualización del 29 oct 2026. Se incorporaron seis partidos finalizados de J15 según la captura del 31 oct 2026. Actualización del 8 nov 2026 según dos capturas del usuario: jornada 15 completa y ocho resultados de jornada 16. Actualización del 9 nov 2026: León 1–1 Guadalajara (J16, 8 nov), según captura del usuario."
 }
